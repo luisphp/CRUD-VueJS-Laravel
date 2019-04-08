@@ -23,6 +23,8 @@
 
 					axios.delete(url).then(response => {
 
+						//console.log(response);
+						
 						this.getKeeps();
 						
 					});

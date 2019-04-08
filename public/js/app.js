@@ -13626,7 +13626,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					var url = 'tasks/' + keep.id;
 
 					axios.delete(url).then(response => {
+
+						console.log(response);
+						
 						this.getKeeps();
+						
+					}).catch(error =>{
+						console.log(error)
 					});
 				}
 
