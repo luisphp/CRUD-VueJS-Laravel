@@ -51,7 +51,7 @@ class TaskController extends Controller
     {
         //
 
-        $task = Task::findorFail($id);
+        $task = Task::findOrFail($id);
 
         return $task;
     }
