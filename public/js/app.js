@@ -29712,7 +29712,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			el: '#crud',
 			data: {
-				keeps: []
+				keeps: [],
+				newKeep: '',
+				errors: [],
+				fillKeep: {'id':'', 'keep': ''},
 			},
 			created: function(){
 				this.getKeeps();
@@ -29742,6 +29745,43 @@ return /******/ (function(modules) { // webpackBootstrap
 						toastr.success('#'+ keep.id + ' Eliminado Correctamente');
 						
 					});
+				},
+				createKeep: function(){
+
+					var url = 'tasks';
+
+					axios.post(url, {
+
+						keep: this.newKeep
+
+					}).then(response =>{
+
+						this.getKeeps();
+
+						this.newKeep = '';
+
+						this.errors = [];
+
+						$('#create').modal('hide');
+
+						toastr.success('New Task Created!');
+
+					}).catch(error => {
+
+						this.errors = error.response.data
+
+					});
+				},
+				editKeep: function(keep){
+
+					this.fllKeep.id 	= keep.id;
+					this.fillKeep.keep  = keep.keep;
+
+					$('#edit').modal('show');
+
+				},
+				updateKeep: function(id){
+					alert('Edicion');
 				}
 
 			}

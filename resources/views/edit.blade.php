@@ -1,6 +1,6 @@
-<form method="POST" v-on:submit.prevent="createKeep"> 
+<form method="POST" v-on:submit.prevent="updateKeep(fillKeep.id)"> 
 
-<div class="modal fade" id="create">
+<div class="modal fade" id="edit">
 
 	<div class="modal-dialog">
 
@@ -8,7 +8,7 @@
 
 			<div class="modal-header">
 
-				<h4>New Task</h4>
+				<h4>Edit Task</h4>
 
 				<button type="button" class="close" data-dismiss="modal">
 					
@@ -21,9 +21,9 @@
 
 			<div class="modal-body">
 
-				<label for="keep"> Create New Task</label>
+				<label for="keep"> Update Task</label>
 
-					<input type="text"  name="keep" class="form-control" v-model="newKeep">
+					<input type="text"  name="keep" class="form-control" v-model="fillKeep.keep">
 					
 					<span v-for="error in errors" class="text-danger">@{{error}}</span>
 
@@ -33,7 +33,7 @@
 
 			<div class="modal-footer">
 
-				<input type="submit" class="btn btn-primary" value="Save">
+				<input type="submit" class="btn btn-primary" value="Update">
 
 			</div>
 
