@@ -11,9 +11,11 @@
 
 </div>
 
+
 <div class="col-md-7">
 	<span class="float-right">
 	<a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#create">New Task</a>
+	<br>
 	</span>
 
 

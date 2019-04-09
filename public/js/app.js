@@ -29725,7 +29725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					var urlKeeps = 'tasks';
 					axios.get(urlKeeps).then(response =>{
 
-						this.keeps = response.data;
+						this.keeps = response.data.tasks.data;
 					});
 				},
 				deleteKeep: function(keep){
@@ -29781,7 +29781,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				},
 				updateKeep: function(id){
-					alert('Edicion');
+					var url = 'tasks/'+ id;
+
+					axios.put(url, this.fillKeep).then(response =>{
+
+						this.getKeeps();
+
+						this.fillKeep = {'id':'', 'keep':''};
+						this.errors = [];
+
+						$('#edit').modal('hide');
+						toastr.success('Task Updated!');
+
+					}).catch(error =>{
+						this.errors = error.response.data
+					});
 				}
 
 			}
