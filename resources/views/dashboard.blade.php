@@ -36,7 +36,7 @@
 			      	
 			      		<div class="btn-group">
 
-			      	<a href="#" class="btn btn-warning btn-sm" v-on.click.prevent="editKeep(keep)">Edit</a>
+			      	<a href="#" class="btn btn-warning btn-sm" v-on:click.prevent="editKeep(keep)">Edit</a>
 			      	<a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteKeep(keep)">Delete</a>
 					
 						</div>
@@ -51,9 +51,13 @@
 	</div>
 
 	<div class="col-md-5">
+
 		<pre>
+
 		@{{ $data }}
+
 		</pre>
+
 	</div>
 
 

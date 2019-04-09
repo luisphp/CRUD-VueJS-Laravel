@@ -29715,7 +29715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				keeps: [],
 				newKeep: '',
 				errors: [],
-				fillKeep: {'id':'', 'keep': ''},
+				fillKeep: {'id' : '', 'keep': ''},
 			},
 			created: function(){
 				this.getKeeps();
@@ -29774,7 +29774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				},
 				editKeep: function(keep){
 
-					this.fllKeep.id 	= keep.id;
+					this.fillKeep.id 	= keep.id;
 					this.fillKeep.keep  = keep.keep;
 
 					$('#edit').modal('show');
