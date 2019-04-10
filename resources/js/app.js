@@ -10,15 +10,15 @@
 				fillKeep: {'id' : '', 'keep': ''},
 				pagination: {
 
-					'paginate' => [
-                    'total'         => $tasks->total(),
-                    'current_page'  => $tasks->currentPage(),
-                    'per_page'      => $tasks->perPage(),
-                    'total'         => $tasks->LastPage(),
-                    'total'         => $tasks->firstItem(),
-                    'total'         => $tasks->lastPage(),
-                ],
-                'tasks' => $tasks
+					'paginate' : {
+                    'total'         : 0,
+                    'current_page'  : 0,
+                    'per_page'      : 0,
+                    'last_page'     : 0,
+                    'from'          : 0,
+                    'to'            : 0,
+                }
+                
 
 				}
 			},
@@ -26,11 +26,12 @@
 				this.getKeeps();
 			},
 			methods: {
-				getKeeps: function(){
-					var urlKeeps = 'tasks';
+				getKeeps: function(page){
+					var urlKeeps = 'tasks?page='+page;
 					axios.get(urlKeeps).then(response =>{
 
-						this.keeps = response.data.tasks.data;
+						this.keeps = response.data.tasks.data,
+						this.pagination = response.data.pagination;
 					});
 				},
 				deleteKeep: function(keep){
@@ -101,7 +102,58 @@
 					}).catch(error =>{
 						this.errors = error.response.data
 					});
-				}
+				},
+				computed: {
+
+				isActive: function(){
+
+					return this.pagination.current_page;
+
+					},
+				pagesNumber: function(){
+
+					if(!this.pagination.to){
+
+						return [];
+
+					}
+						var from = this.pagination.current_page - 2; //TODO  offset
+					
+						if(from < 1){
+
+							from = 1;
+
+						}
+
+						var to = from +(2 * 2); //TODO 
+
+						if(to >= this.pagination.last_page){
+
+							to = this.pagination.last_page;
+
+						}
+
+						var pagesArray = [];
+
+						while( from <= to){
+							
+							pagesArray.push(from);
+							from++;
+
+						}
+						
+						return pagesArray;
+
+					}
+					
+ 				//End computed.
+				},
+				changePage: function(page){
+
+							this.pagination.current_page = page;
+							this.getKeeps(page);
+
+					}
 
 			}
 			

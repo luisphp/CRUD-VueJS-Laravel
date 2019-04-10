@@ -12,18 +12,18 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::OrderBy('id','DESC')->paginate(4);
+        $tasks = Task::OrderBy('id','DESC')->paginate(3);
 
         return [
-                'paginate' => [
+                'pagination' => [
                     'total'         => $tasks->total(),
                     'current_page'  => $tasks->currentPage(),
                     'per_page'      => $tasks->perPage(),
-                    'total'         => $tasks->LastPage(),
-                    'total'         => $tasks->firstItem(),
-                    'total'         => $tasks->lastPage(),
+                    'last_page'         => $tasks->LastPage(),
+                    'from'         => $tasks->firstItem(),
+                    'to'         => $tasks->lastPage(),
                 ],
                 'tasks' => $tasks
         ];
