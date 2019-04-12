@@ -52,14 +52,14 @@
 		<ul class="pagination">
 
 			<li class="page-item" v-if="pagination.current_page > 1">
-				<a href="" @click.prevent="changePage(pagination.current_page - 1)" class="page-link" >
+				<a href="#" @click.prevent="changePage(pagination.current_page - 1)" class="page-link" >
 					<span>Back</span>
 				</a>
 			</li>
 
 			<li class="page-item" v-for="page in pagesNumber" v-bind:class="[page == isActive ? 'active' : '']">
 				<a href="" class="page-link">
-					<span>1</span>
+					@{{ page }}
 				</a>
 			</li>
 

@@ -17,7 +17,7 @@
                     'last_page'     : 0,
                     'from'          : 0,
                     'to'            : 0,
-                }
+                	}
                 
 
 				}
@@ -103,7 +103,15 @@
 						this.errors = error.response.data
 					});
 				},
-				computed: {
+				changePage: function(page){
+
+							this.pagination.current_page = page;
+							this.getKeeps(page);
+
+					}
+
+			},
+			computed: {
 
 				isActive: function(){
 
@@ -147,14 +155,6 @@
 					}
 					
  				//End computed.
-				},
-				changePage: function(page){
-
-							this.pagination.current_page = page;
-							this.getKeeps(page);
-
-					}
-
-			}
+				}
 			
 		});

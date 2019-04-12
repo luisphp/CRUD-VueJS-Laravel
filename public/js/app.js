@@ -29725,7 +29725,7 @@ return /******/ (function(modules) { // webpackBootstrap
                     'last_page'     : 0,
                     'from'          : 0,
                     'to'            : 0,
-                }
+                	}
                 
 
 				}
@@ -29811,7 +29811,15 @@ return /******/ (function(modules) { // webpackBootstrap
 						this.errors = error.response.data
 					});
 				},
-				computed: {
+				changePage: function(page){
+
+							this.pagination.current_page = page;
+							this.getKeeps(page);
+
+					}
+
+			},
+			computed: {
 
 				isActive: function(){
 
@@ -29855,14 +29863,6 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 					
  				//End computed.
-				},
-				changePage: function(page){
-
-							this.pagination.current_page = page;
-							this.getKeeps(page);
-
-					}
-
-			}
+				}
 			
 		});
